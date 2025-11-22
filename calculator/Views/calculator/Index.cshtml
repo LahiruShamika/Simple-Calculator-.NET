@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Calculator";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Simple Calculator</h1>
+    <form asp-action="Calculate" method="post">
+    @Html.AntiForgeryToken()
+    <div>
+        <label>First</label>
+        <input name="FirstOperand" value="@(Model?.FirstOperand ?? 0)" />
+    </div>
+    <div>
+        <label>Second</label>
+        <input name="SecondOperand" value="@(Model?.SecondOperand ?? 0)" />
+    </div>
+    <div>
+        <label>Operation</label>
+        <select name="Operation">
+            <option value="Add">Add</option>
+            <option value="Subtract">Subtract</option>
+            <option value="Multiply">Multiply</option>
+            <option value="Divide">Divide</option>
+        </select>
+    </div>
+    <button type="submit">Calculate</button>
+</form>
+    <div>
+    <h3>Result</h3>
+    <p>@Model?.Result</p>
+    </div>
+</div>
